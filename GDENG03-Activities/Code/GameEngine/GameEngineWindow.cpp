@@ -33,6 +33,22 @@ void GameEngineWindow::OnCreate(HWND hWnd)
 	FreeCameraObject* freeCam = new FreeCameraObject(width, height); 
 	freeCam->GetTransform()->Position = { 0.0f, 0.0f, 0.0f }; 
 	GameObjectManager::GetInstance()->AddObject(freeCam); 
+
+	SphereObject* sphere = new SphereObject();
+	GameObjectManager::GetInstance()->AddObject(sphere);
+	sphere->GetTransform()->Position = { 0, 0, 10 };
+
+	CubeObject* cube = new CubeObject();
+	GameObjectManager::GetInstance()->AddObject(cube);
+	cube->GetTransform()->Position = { 5, 0, 10 };
+
+	ConeObject* cone = new ConeObject();
+	GameObjectManager::GetInstance()->AddObject(cone);
+	cone->GetTransform()->Position = { -5, 0, 10 };
+
+	CylinderObject* cylinder = new CylinderObject();
+	GameObjectManager::GetInstance()->AddObject(cylinder);
+	cylinder->GetTransform()->Position = { -10, 0, 10 };
 }
 
 void GameEngineWindow::OnUpdate()
