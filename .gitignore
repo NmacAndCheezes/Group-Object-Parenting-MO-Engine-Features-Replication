@@ -184,5 +184,5 @@ node_modules/
 !**/3D/*
 !**/[Mm]edia/*
 !**/[Ss]haders/*
-#!**/[Ll]ibs/*
-#!**/[Pp]ackages/** 
+!**/[Ll]ibs/*
+!**/[Pp]ackages/** 
