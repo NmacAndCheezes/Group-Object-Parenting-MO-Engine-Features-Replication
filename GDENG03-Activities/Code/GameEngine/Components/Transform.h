@@ -75,4 +75,7 @@ private:
 	Vector3 localForward;
 
 	TMatrix tMatrix;
+
+private:
+	friend class InspectorUI;
 };

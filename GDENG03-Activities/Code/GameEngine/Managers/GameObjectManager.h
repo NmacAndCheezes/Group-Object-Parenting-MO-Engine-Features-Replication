@@ -37,5 +37,8 @@ private:
 	std::vector<AGameObject*> gameObjectList;
 	std::unordered_map<std::string, AGameObject*> gameObjectMap;
 	std::unordered_map<LPCWSTR, std::vector<AGameObject*>> shaderToObjectsMap;
+
+private:
+	friend class HeirarcyUI;
 };
 

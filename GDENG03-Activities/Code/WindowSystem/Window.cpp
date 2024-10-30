@@ -1,6 +1,7 @@
 #include "Window.h"
 #include "../WindowsMessageMap.h"
 #include "../GameEngine/EngineTime.h"
+#include "../Editor UI/imgui-master/imgui.h"
 
 
 Window::Window() : width (640), height(480), isRunning(false),
@@ -125,8 +126,13 @@ void Window::OnDestroy()
 	isRunning = false;
 }
 
+  extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
+//extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 LRESULT Window::StaticWndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
+	if (ImGui_ImplWin32_WndProcHandler(hWnd, msg, wParam, lParam)) {
+		return true;
+	}
 	// uncomment for DEBUG (also prints the Widnow Messages (msg) to the Output Tab)
 	//static WindowsMessageMap mm;
 	//OutputDebugString(mm(msg, lParam, wParam).c_str());

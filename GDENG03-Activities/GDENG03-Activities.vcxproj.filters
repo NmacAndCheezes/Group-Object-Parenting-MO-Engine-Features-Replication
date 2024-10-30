@@ -156,6 +156,18 @@
     <ClCompile Include="Code\GameEngine\MathUtils.cpp">
       <Filter>GameEngine</Filter>
     </ClCompile>
+    <ClCompile Include="Code\Editor UI\AUIScreen.cpp" />
+    <ClCompile Include="Code\Editor UI\EToolBar.cpp" />
+    <ClCompile Include="Code\Editor UI\EditorUIManager.cpp" />
+    <ClCompile Include="Code\Editor UI\imgui-master\imgui.cpp" />
+    <ClCompile Include="Code\Editor UI\imgui-master\imgui_demo.cpp" />
+    <ClCompile Include="Code\Editor UI\imgui-master\imgui_draw.cpp" />
+    <ClCompile Include="Code\Editor UI\imgui-master\imgui_impl_dx11.cpp" />
+    <ClCompile Include="Code\Editor UI\imgui-master\imgui_impl_win32.cpp" />
+    <ClCompile Include="Code\Editor UI\imgui-master\imgui_tables.cpp" />
+    <ClCompile Include="Code\Editor UI\imgui-master\imgui_widgets.cpp" />
+    <ClCompile Include="Code\Editor UI\HeirarcyUI.cpp" />
+    <ClCompile Include="Code\Editor UI\InspectorUI.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Code\WindowsMessageMap.h" />
@@ -300,6 +312,19 @@
     <ClInclude Include="Code\GameEngine\MathUtils.h">
       <Filter>GameEngine</Filter>
     </ClInclude>
+    <ClInclude Include="Code\Editor UI\AUIScreen.h" />
+    <ClInclude Include="Code\Editor UI\EToolBar.h" />
+    <ClInclude Include="Code\Editor UI\EditorUIManager.h" />
+    <ClInclude Include="Code\Editor UI\imgui-master\imstb_truetype.h" />
+    <ClInclude Include="Code\Editor UI\imgui-master\imconfig.h" />
+    <ClInclude Include="Code\Editor UI\imgui-master\imgui.h" />
+    <ClInclude Include="Code\Editor UI\imgui-master\imgui_impl_dx11.h" />
+    <ClInclude Include="Code\Editor UI\imgui-master\imgui_impl_win32.h" />
+    <ClInclude Include="Code\Editor UI\imgui-master\imgui_internal.h" />
+    <ClInclude Include="Code\Editor UI\imgui-master\imstb_rectpack.h" />
+    <ClInclude Include="Code\Editor UI\imgui-master\imstb_textedit.h" />
+    <ClInclude Include="Code\Editor UI\HeirarcyUI.h" />
+    <ClInclude Include="Code\Editor UI\InspectorUI.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Code\Shaders\PixelShader.hlsl">

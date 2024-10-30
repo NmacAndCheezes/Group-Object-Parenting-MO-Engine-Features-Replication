@@ -54,5 +54,7 @@ protected:
 	AGameObject* parent;
 	std::vector<AGameObject*> childList;
 	std::vector<AComponent*> componentList; 
+private:
+	friend class InspectorUI;
 };
 

@@ -7,7 +7,7 @@
 #include "GameObjects/Primitives/ConeObject.h"
 #include "GameObjects/Primitives/CylinderObject.h"
 #include "GameObjects/Primitives/SphereObject.h"
-
+#include "../Editor UI/EditorUIManager.h"
 
 
 GameEngineWindow::GameEngineWindow(int fps) : fps(fps), currDelta(0.f)
@@ -23,11 +23,12 @@ GameEngineWindow::~GameEngineWindow()
 void GameEngineWindow::OnCreate(HWND hWnd)
 {
 	// initialize game engine
+	
 	GraphicsEngine::GetInstance()->Init();
 	GraphicsEngine::GetInstance()->SetViewport(windowSize.right - windowSize.left, windowSize.bottom - windowSize.top);
 	swapChain = GraphicsEngine::GetInstance()->CreateSwapChain(hWnd, windowSize.right - windowSize.left, windowSize.bottom - windowSize.top);
 	EngineTime::Initialize();
-
+	EditorUIManager::get()->initialize(hWnd);
 
 	// setup the objects
 	FreeCameraObject* freeCam = new FreeCameraObject(width, height); 
@@ -67,7 +68,8 @@ void GameEngineWindow::OnUpdate()
 		Mouse::FlushEventsBuffer(); 
 	}
 
-	GameObjectManager::GetInstance()->Draw(); 
+	GameObjectManager::GetInstance()->Draw();
+	EditorUIManager::get()->update();
 	swapChain->Present(true); 
 }
 
@@ -76,6 +78,7 @@ void GameEngineWindow::OnDestroy()
 	Window::OnDestroy();
 
 	GraphicsEngine::GetInstance()->Release();
+	EditorUIManager::get()->destroy();
 	// engine time???
 	// other more managers???
 }
