@@ -10,23 +10,31 @@ AGameObjectManager::AGameObjectManager()
 
 void AGameObjectManager::registerAGameObject(AGameObject* obj)
 {
-	obj->setId(m_object_list.size());
-	m_object_list.push_back(obj);
+	//obj->setId(m_object_list.size());
+	m_object_list[obj->transform()->childIndex].push_back(obj);
+}
+
+void AGameObjectManager::reorderAGameObject(AGameObject* obj, int oldKey)
+{
+	m_object_list[oldKey].remove(obj);
+	m_object_list[obj->transform()->childIndex].push_back(obj);
 }
 
 void AGameObjectManager::deleteAGameObject(AGameObject* obj)
 {
-	m_object_list.remove(obj);
+	m_object_list[obj->transform()->childIndex].remove(obj);
 	delete obj;
 }
 
 
 void AGameObjectManager::update()
 {
-	for (auto obj : m_object_list)
-	{
-		if (!obj->getActive()) continue;
-		obj->update();
+	for (auto i = m_object_list.begin(); i != m_object_list.end(); i++) {
+		for (auto obj : i->second)
+		{
+			if (!obj->getActive()) continue;
+			obj->update();
+		}
 	}
 }
 

@@ -1,5 +1,6 @@
 #pragma once
 #include <list>
+#include <map>
 #include "AppWindow.h"
 #include "Renderer.h"
 #include "AGameObject.h"
@@ -22,10 +23,12 @@ private:
 	AGameObjectManager& operator=(AGameObjectManager const&) {};
 	~AGameObjectManager();
 
+	void reorderAGameObject(AGameObject* obj, int oldKey);
 private:
-	std::list<AGameObject*> m_object_list;
+	std::map<int, std::list<AGameObject*>> m_object_list;
 
 private:
 	friend class AGameObject;
+	friend class Transform;
 };
 
