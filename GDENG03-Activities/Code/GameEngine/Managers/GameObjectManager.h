@@ -40,5 +40,6 @@ private:
 
 private:
 	friend class HeirarcyUI;
+	friend class InspectorUI;
 };
 

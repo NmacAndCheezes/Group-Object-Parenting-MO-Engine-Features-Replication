@@ -1,12 +1,14 @@
 #pragma once
 #include "AUIScreen.h"
-class AGameObject;
+#include <vector>
+#include "../GameEngine/GameObjects/AGameObject.h"
 
 class HeirarcyUI : public AUIScreen
 {
 public:
 	HeirarcyUI();
 	virtual void update() override;
+	void printChild(AGameObject* obj, int layer);
 	~HeirarcyUI();
 private:
 	AGameObject* selectedObject = nullptr;

@@ -2,6 +2,7 @@
 #include "HeirarcyUI.h"
 #include "../GameEngine/Components/Transform.h"
 #include "../GameEngine/GameObjects/AGameObject.h"
+#include "../GameEngine/Managers/GameObjectManager.h"
 
 InspectorUI::InspectorUI(HeirarcyUI* HeirarcyUI) : heirarcyUI(HeirarcyUI)
 {
@@ -30,6 +31,14 @@ void InspectorUI::update()
 	ImGui::InputFloat3("Position", pos);
 	ImGui::InputFloat3("Rotation", rot);
 	ImGui::InputFloat3("Scale", scale);
+
+	for (auto i : GameObjectManager::GetInstance()->gameObjectList)
+	{
+		if (ImGui::Button(i->Name.c_str()))
+		{
+			selected->AttachChild(i);
+		}
+	}
 
 	t->SetLocalPosition(Vector3(pos[0], pos[1], pos[2]));
 	t->Rotate(Vector3(rot[0], rot[1], rot[2]));

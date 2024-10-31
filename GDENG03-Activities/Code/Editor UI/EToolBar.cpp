@@ -8,16 +8,9 @@ EToolBar::EToolBar()
 
 void EToolBar::update()
 {
-	ImGui::Begin("Toolbar");
+    ImGui::SetNextWindowPos(ImVec2(0, 0), ImGuiCond_Always); // Set position to top-left
+    ImGui::Begin("Toolbar", nullptr, ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_AlwaysAutoResize);
     ImGui::SameLine(); // Keep buttons on the same line
-
-    // Create a button
-    if (ImGui::Button("Hover Me")) {
-        CubeObject* cube = new CubeObject();
-        GameObjectManager::GetInstance()->AddObject(cube);
-        cube->GetTransform()->Position = { 0, 0, 0 };
-    }
-
     ImGui::End();
 }
 
