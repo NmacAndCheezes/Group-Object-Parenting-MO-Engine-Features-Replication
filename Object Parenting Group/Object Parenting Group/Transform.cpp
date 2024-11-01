@@ -104,10 +104,10 @@ void Transform::SetParent(Transform* parent)
 	else
 	{
 		m_parent = parent;
-		childIndex = parent->childIndex + 1;
-		m_localPosition = m_position - parent->m_position;
-		m_localRotation = m_rotation  - parent->m_rotation;
-		m_localScale = parent->
+		childIndex = m_parent->childIndex + 1;
+		m_localPosition = m_parent->m_position - m_position;
+		m_localRotation = m_parent->m_rotation - m_rotation;
+		m_localScale = m_parent->m_scale - m_scale;
 	}
 	AGameObjectManager::get()->reorderAGameObject(attachedGameObject, oldChildIndex);
 }
@@ -124,7 +124,7 @@ Vector3D Transform::position()
 
 Vector3D Transform::localPosition()
 {
-	return Vector3D();
+	return m_parent->m_position - m_position;
 }
 
 Vector3D Transform::rotation()
@@ -134,7 +134,7 @@ Vector3D Transform::rotation()
 
 Vector3D Transform::localRotation()
 {
-	return Vector3D();
+	return m_parent->m_rotation - m_position;
 }
 
 Vector3D Transform::scale()
@@ -144,7 +144,7 @@ Vector3D Transform::scale()
 
 Vector3D Transform::localScale()
 {
-	return Vector3D();
+	return m_parent->m_scale - m_scale;
 }
 
 Matrix4x4 Transform::getTransformMatrix()

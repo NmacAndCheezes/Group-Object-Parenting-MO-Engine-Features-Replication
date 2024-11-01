@@ -85,6 +85,7 @@ void AppWindow::onCreate()
 	Plane* plane = new Plane(m_wood_tex);
 	plane->transform()->SetRotation(Math::toRadians(180), 0, 0);
 	plane->transform()->SetScale(Vector3D(100, 0, 100));
+	cube->transform()->SetParent(plane->transform());
 #endif
 	
 #if 0
