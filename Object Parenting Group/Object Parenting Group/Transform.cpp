@@ -94,6 +94,11 @@ void Transform::SetScale(float x, float y, float z)
 }
 
 
+Transform* Transform::GetParent()
+{
+	return m_parent;
+}
+
 void Transform::SetParent(Transform* parent)
 {
 	int oldChildIndex = childIndex;
@@ -110,6 +115,11 @@ void Transform::SetParent(Transform* parent)
 		m_localScale = m_parent->m_scale - m_scale;
 	}
 	AGameObjectManager::get()->reorderAGameObject(attachedGameObject, oldChildIndex);
+}
+
+std::vector<Transform*> Transform::GetChildren()
+{
+	return m_children;
 }
 
 int Transform::getChildIndex()

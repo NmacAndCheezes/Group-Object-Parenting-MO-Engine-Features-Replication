@@ -153,6 +153,12 @@
     <ClCompile Include="TextureManager\TextureManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Editor UI\HeirarcyUI.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Editor UI\InspectorUI.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AGameObject.h">
@@ -312,6 +318,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="TextureManager\TextureManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Editor UI\HeirarcyUI.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Editor UI\InspectorUI.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

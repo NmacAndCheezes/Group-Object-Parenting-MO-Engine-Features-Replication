@@ -5,9 +5,9 @@
 #include "../GraphicsEngine.h"
 #include "../RenderSystem.h"
 #include "../DeviceContext.h"
-#include "CreditsScreen.h"
-#include "EColorPickerScreen.h"
 #include "EToolBar.h"
+#include "HeirarcyUI.h"
+#include "InspectorUI.h"
 
 EditorUIManager* EditorUIManager::sharedInstance = nullptr;
 
@@ -20,16 +20,19 @@ EditorUIManager::EditorUIManager(HWND hwnd)
 	ImGui::StyleColorsDark();
 
 	ImGui_ImplWin32_Init(hwnd);
-	ImGui_ImplDX11_Init(GraphicsEngine::get()->getRenderSystem()->getID3D11Device(), GraphicsEngine::get()->getRenderSystem()->getImmediateDeviceContext().get()->getID3D11DeviceContext());
+	ImGui_ImplDX11_Init(
+		GraphicsEngine::get()->getRenderSystem()->getID3D11Device(),
+		GraphicsEngine::get()->getRenderSystem()->getImmediateDeviceContext().get()->getID3D11DeviceContext()
+	);
 
 	EToolBar* tb = new EToolBar();
 	m_UIScreenList["Tool Bar"] = tb;
 
-	CreditsScreen* cs = new CreditsScreen();
-	m_UIScreenList["Credits"] = cs;
+	HeirarcyUI* h = new HeirarcyUI();
+	m_UIScreenList["Heirarcy"] = h;
 
-	EColorPickerScreen* ecps = new EColorPickerScreen();
-	m_UIScreenList["Color Picker"] = ecps;
+	InspectorUI* i = new InspectorUI(h);
+	m_UIScreenList["Inspector"] = i;
 }
 
 void EditorUIManager::initialize(HWND hwnd)

@@ -161,6 +161,7 @@
     <ClCompile Include="Editor UI\EColorPickerScreen.cpp" />
     <ClCompile Include="Editor UI\EditorUIManager.cpp" />
     <ClCompile Include="Editor UI\EToolBar.cpp" />
+    <ClCompile Include="Editor UI\HeirarcyUI.cpp" />
     <ClCompile Include="Editor UI\imgui-master\imgui.cpp" />
     <ClCompile Include="Editor UI\imgui-master\imgui_demo.cpp" />
     <ClCompile Include="Editor UI\imgui-master\imgui_draw.cpp" />
@@ -168,6 +169,7 @@
     <ClCompile Include="Editor UI\imgui-master\imgui_impl_win32.cpp" />
     <ClCompile Include="Editor UI\imgui-master\imgui_tables.cpp" />
     <ClCompile Include="Editor UI\imgui-master\imgui_widgets.cpp" />
+    <ClCompile Include="Editor UI\InspectorUI.cpp" />
     <ClCompile Include="EditorCamera.cpp" />
     <ClCompile Include="EngineTime.cpp" />
     <ClCompile Include="GraphicsEngine.cpp" />
@@ -209,6 +211,7 @@
     <ClInclude Include="Editor UI\EColorPickerScreen.h" />
     <ClInclude Include="Editor UI\EditorUIManager.h" />
     <ClInclude Include="Editor UI\EToolBar.h" />
+    <ClInclude Include="Editor UI\HeirarcyUI.h" />
     <ClInclude Include="Editor UI\imgui-master\imconfig.h" />
     <ClInclude Include="Editor UI\imgui-master\imgui.h" />
     <ClInclude Include="Editor UI\imgui-master\imgui_impl_dx11.h" />
@@ -217,6 +220,7 @@
     <ClInclude Include="Editor UI\imgui-master\imstb_rectpack.h" />
     <ClInclude Include="Editor UI\imgui-master\imstb_textedit.h" />
     <ClInclude Include="Editor UI\imgui-master\imstb_truetype.h" />
+    <ClInclude Include="Editor UI\InspectorUI.h" />
     <ClInclude Include="EditorCamera.h" />
     <ClInclude Include="EngineTime.h" />
     <ClInclude Include="GraphicsEngine.h" />

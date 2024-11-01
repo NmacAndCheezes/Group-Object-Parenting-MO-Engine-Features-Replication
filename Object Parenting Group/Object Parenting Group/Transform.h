@@ -1,6 +1,7 @@
 #pragma once
 #include "Vector3D.h"
 #include "Matrix4x4.h"
+#include <vector>
 
 class AGameObject;
 class Transform
@@ -28,7 +29,11 @@ public:
 	void SetRotation(float x, float y, float z);
 	void SetScale(float x, float y, float z);
 
+	Transform* GetParent();
 	void SetParent(Transform* parent);
+
+	std::vector<Transform*> GetChildren();
+
 	int getChildIndex();
 	Vector3D position();
 	Vector3D localPosition();
@@ -53,7 +58,7 @@ private:
 	Matrix4x4 m_transform_matrix;
 
 	int childIndex;
-
+	std::vector<Transform*> m_children;
 	AGameObject* attachedGameObject;
 private:
 	friend class AGameObject;
