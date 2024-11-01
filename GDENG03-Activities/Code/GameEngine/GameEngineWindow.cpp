@@ -25,8 +25,8 @@ void GameEngineWindow::OnCreate(HWND hWnd)
 	// initialize game engine
 	
 	GraphicsEngine::GetInstance()->Init();
-	GraphicsEngine::GetInstance()->SetViewport(windowSize.right - windowSize.left, windowSize.bottom - windowSize.top);
-	swapChain = GraphicsEngine::GetInstance()->CreateSwapChain(hWnd, windowSize.right - windowSize.left, windowSize.bottom - windowSize.top);
+	GraphicsEngine::GetInstance()->SetViewport(width, height);
+	swapChain = GraphicsEngine::GetInstance()->CreateSwapChain(hWnd, width, height);
 	EngineTime::Initialize();
 	EditorUIManager::get()->initialize(hWnd);
 
@@ -62,7 +62,7 @@ void GameEngineWindow::OnUpdate()
 	{
 		currDelta -= secsPerFrame; 
 		GameObjectManager::GetInstance()->Update(secsPerFrame); 
-
+		EditorUIManager::get()->update();
 		Keyboard::FlushEventsBuffer();  
 		Keyboard::FlushCharBuffer(); 
 		Mouse::FlushEventsBuffer(); 
