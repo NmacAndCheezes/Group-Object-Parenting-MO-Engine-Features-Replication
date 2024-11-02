@@ -3,7 +3,6 @@
 #include "RenderingPrerequisite.h"
 #include "TextureManager/Texture.h"
 
-class AGameObject;
 enum PRIMITIVE_TYPE { CUBE, PLANE };
 class PrimitiveRenderer : public Renderer
 {

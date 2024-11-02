@@ -1,5 +1,4 @@
 #pragma once
-#include "Vector3D.h"
 #include "Component.h"
 class Rotator : public Component
 {

@@ -1,14 +1,15 @@
 #pragma once
+#include <list>
 #include "Matrix4x4.h"
 #include "Vector3D.h"
 #include "Window.h"
 #include "Component.h"
-#include "Transform.h"
 
 #include <string>
-#include <list>
+#include <vector>
 
-class Component;
+class Transform;
+
 class AGameObject
 {
 public:
@@ -28,22 +29,19 @@ public:
 	bool getActive();
 
 	void attachChild(AGameObject* child);
-	void detachChild(AGameObject* child);
-	std::list<AGameObject*> getChildren();
-
-	void setParent(AGameObject* parent);
-	AGameObject* getParent();
 
 	Transform* transform();
 	
 protected:
 	bool m_isActive = true;
-	Transform* m_transform = nullptr;
+	Transform* m_transform;
 	std::list<Component*> m_component_list;
 	std::string m_name;
 	std::string m_id;
 
 	AGameObject* m_parent;
-	std::list<AGameObject*> m_children;
+	std::vector<AGameObject*> m_children;
+private:
+	friend class AGameObject;
 };
 

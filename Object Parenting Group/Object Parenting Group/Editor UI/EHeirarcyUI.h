@@ -8,7 +8,6 @@ class EHeirarcyUI : public AUIScreen
 public:
 	EHeirarcyUI();
 	virtual void update() override;
-	void printChild(AGameObject* obj, int layer);
 	~EHeirarcyUI();
 
 private:

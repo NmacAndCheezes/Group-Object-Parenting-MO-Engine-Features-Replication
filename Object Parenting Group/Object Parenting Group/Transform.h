@@ -1,10 +1,9 @@
 #pragma once
 #include "Vector3D.h"
 #include "Matrix4x4.h"
-#include "AGameObject.h"
-#include "Component.h"
+class AGameObject;
 
-class Transform : public Component
+class Transform
 {
 public:
 	Transform();
@@ -13,7 +12,7 @@ public:
 	Transform(const Vector3D& initialPosition, const Vector3D& initialRotation, const Vector3D& initialScale);
 	~Transform();
 
-	virtual void update() override;
+	void update();
 
 	void SetPosition(const Vector3D& vector);
 	void SetRotation(const Vector3D& vector);
