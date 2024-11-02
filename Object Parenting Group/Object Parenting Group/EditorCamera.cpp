@@ -36,10 +36,10 @@ void EditorCamera::move()
 	}
 
 	worldCam.setTranslation(new_pos);
-	
+
 
 	m_position = worldCam.getTranslation();
-	
+
 	updateCamera();
 
 	m_position.printVector("Position");
@@ -127,7 +127,7 @@ void EditorCamera::onKeyDown(int key)
 
 			is_HoldingP = true;
 		}
-		
+
 	}
 
 	//std::cout << "key pressed: " << char(key) << std::endl;
@@ -153,12 +153,12 @@ void EditorCamera::onMouseMove(const Point& mouse_pos)
 		float y = m_rotation.Y();
 		float z = m_rotation.Z();
 
-		float speed = 0.01;
+		float speed = 0.02;
 		x += (mouse_pos.m_y - (m_window->Height() / 2.0f)) * EngineTime::getDeltaTime() * speed;
 		y += (mouse_pos.m_x - (m_window->Width() / 2.0f)) * EngineTime::getDeltaTime() * speed;
 		this->SetRotation(x, y, z);
 	}
-	
+
 }
 
 void EditorCamera::onLeftMouseDown(const Point& delta_mouse_pos)

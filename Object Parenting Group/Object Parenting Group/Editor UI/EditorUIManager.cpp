@@ -8,6 +8,7 @@
 #include "CreditsScreen.h"
 #include "EColorPickerScreen.h"
 #include "EToolBar.h"
+#include "EHeirarcyUI.h"
 
 EditorUIManager* EditorUIManager::sharedInstance = nullptr;
 
@@ -25,11 +26,8 @@ EditorUIManager::EditorUIManager(HWND hwnd)
 	EToolBar* tb = new EToolBar();
 	m_UIScreenList["Tool Bar"] = tb;
 
-	CreditsScreen* cs = new CreditsScreen();
-	m_UIScreenList["Credits"] = cs;
-
-	EColorPickerScreen* ecps = new EColorPickerScreen();
-	m_UIScreenList["Color Picker"] = ecps;
+	EHeirarcyUI* h = new EHeirarcyUI();
+	m_UIScreenList["Heirarcy"] = h;
 }
 
 void EditorUIManager::initialize(HWND hwnd)

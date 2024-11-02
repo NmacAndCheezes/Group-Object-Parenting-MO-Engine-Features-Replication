@@ -49,6 +49,11 @@ AGameObjectManager* AGameObjectManager::get()
 	return &manager;
 }
 
+std::list<AGameObject*> AGameObjectManager::getGameObjectLists()
+{
+	return m_object_list;
+}
+
 AGameObjectManager::~AGameObjectManager()
 {
 

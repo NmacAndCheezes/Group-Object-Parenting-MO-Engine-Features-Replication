@@ -35,8 +35,6 @@ SOFTWARE.*/
 #include "CameraManager.h"
 #include "InputSystem.h"
 #include "Math.h"
-#include "TestAnimation3.h"
-#include "WarpCubeToPlane.h"
 #include "GraphicsEngine.h"
 #include "RenderSystem.h"
 #include "DeviceContext.h"

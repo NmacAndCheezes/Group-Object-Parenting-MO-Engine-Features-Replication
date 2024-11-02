@@ -1,16 +1,17 @@
 #include "Transform.h"
 
+
 Transform::Transform() 
-	: m_position(Vector3D()), m_rotation(Vector3D()), m_scale(Vector3D(1, 1, 1)) { }
+	: Component(), m_position(Vector3D()), m_rotation(Vector3D()), m_scale(Vector3D(1, 1, 1)) { }
 
 Transform::Transform(const Vector3D& position) 
-	: m_position(position), m_rotation(Vector3D()), m_scale(Vector3D(1, 1, 1)) { }
+	: Component(), m_position(position), m_rotation(Vector3D()), m_scale(Vector3D(1, 1, 1)) { }
 
 Transform::Transform(const Vector3D& position, const Vector3D& rotation) 
-	: m_position(position), m_rotation(rotation), m_scale(Vector3D(1, 1, 1)) { }
+	: Component(), m_position(position), m_rotation(rotation), m_scale(Vector3D(1, 1, 1)) { }
 
 Transform::Transform(const Vector3D& position, const Vector3D& rotation, const Vector3D& scale) 
-	: m_position(position), m_rotation(rotation), m_scale(scale) { }
+	: Component(), m_position(position), m_rotation(rotation), m_scale(scale) { }
 
 void Transform::update()
 {
