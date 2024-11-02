@@ -3,9 +3,12 @@
 #include "Matrix4x4.h"
 #include "Vector3D.h"
 #include "Window.h"
-#include "Transform.h"
+#include "Component.h"
+
 #include <string>
-class Component;
+#include <vector>
+
+class Transform;
 
 class AGameObject
 {
@@ -25,14 +28,20 @@ public:
 	void setActive(bool isActive);
 	bool getActive();
 
+	void attachChild(AGameObject* child);
+
 	Transform* transform();
 	
 protected:
-	
 	bool m_isActive = true;
 	Transform* m_transform;
 	std::list<Component*> m_component_list;
 	std::string m_name;
 	std::string m_id;
+
+	AGameObject* m_parent;
+	std::vector<AGameObject*> m_children;
+private:
+	friend class AGameObject;
 };
 

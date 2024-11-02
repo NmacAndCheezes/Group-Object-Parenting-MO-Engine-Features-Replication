@@ -1,6 +1,8 @@
 #pragma once
 #include "Vector3D.h"
 #include "Matrix4x4.h"
+class AGameObject;
+
 class Transform
 {
 public:
@@ -23,13 +25,12 @@ public:
 	Vector3D rotation();
 	Vector3D scale();
 	Matrix4x4 getTransformMatrix();
+	AGameObject* attachedObject();
 private:
 	Vector3D m_position;
 	Vector3D m_rotation;
 	Vector3D m_scale;
 	Matrix4x4 m_transform_matrix;
-
-private:
-	friend class AGameObject;
+	AGameObject* m_attached_obj;
 };
 

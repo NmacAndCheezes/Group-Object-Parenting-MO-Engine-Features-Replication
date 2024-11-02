@@ -87,6 +87,11 @@ Matrix4x4 Transform::getTransformMatrix()
 	return m_transform_matrix;
 }
 
+AGameObject* Transform::attachedObject()
+{
+	return m_attached_obj;
+}
+
 Transform::~Transform()
 {
 
