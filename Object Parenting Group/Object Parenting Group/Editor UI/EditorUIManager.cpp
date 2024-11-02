@@ -72,4 +72,6 @@ AUIScreen* EditorUIManager::getUIScreen(std::string name)
 
 EditorUIManager::~EditorUIManager()
 {
+	ImGui_ImplDX11_Shutdown();
+	ImGui::DestroyContext();
 }

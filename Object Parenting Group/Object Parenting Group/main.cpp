@@ -29,7 +29,6 @@ SOFTWARE.*/
 #include "WindowManager.h"
 #include "InputSystem.h"
 #include "AGameObjectManager.h"
-#include "Editor UI/EditorUIManager.h"
 
 void destroySingletons()
 {
