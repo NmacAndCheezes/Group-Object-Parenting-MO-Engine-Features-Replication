@@ -13,6 +13,6 @@ public:
 	void setIsActive(bool isActive);
 	bool getIsActive();
 protected:
-	bool isActive = true;
+	bool isActive;
 };
 

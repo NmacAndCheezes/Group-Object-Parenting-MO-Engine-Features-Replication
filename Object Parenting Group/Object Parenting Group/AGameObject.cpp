@@ -1,8 +1,6 @@
 #include "AGameObject.h"
 #include "Component.h"
 #include "AGameObjectManager.h"
-#include "Transform.h"
-#include "Component.h"
 
 AGameObject::AGameObject() 
 { 
@@ -74,12 +72,6 @@ void AGameObject::setActive(bool isActive)
 bool AGameObject::getActive()
 {
 	return m_isActive;
-}
-
-void AGameObject::attachChild(AGameObject* child)
-{
-	child->m_parent = this;
-	m_children.push_back(child);
 }
 
 Transform* AGameObject::transform()
