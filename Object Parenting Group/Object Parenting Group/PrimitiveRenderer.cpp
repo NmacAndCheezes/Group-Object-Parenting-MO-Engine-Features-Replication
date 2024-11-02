@@ -8,6 +8,7 @@
 #include "DeviceContext.h"
 #include "CameraManager.h"
 #include "RenderSystem.h"
+#include "Transform.h"
 
 #include <iostream>
 

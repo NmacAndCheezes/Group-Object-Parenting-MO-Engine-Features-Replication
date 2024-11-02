@@ -1,6 +1,7 @@
 #include "TestAnimation3.h"
 #include "EngineTime.h"
 #include "Math.h"
+#include "Transform.h"
 
 TestAnimation3::TestAnimation3()
 {

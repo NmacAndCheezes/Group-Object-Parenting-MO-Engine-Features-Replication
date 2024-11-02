@@ -14,6 +14,11 @@ void AGameObjectManager::registerAGameObject(AGameObject* obj)
 	m_object_list.push_back(obj);
 }
 
+std::list<AGameObject*> AGameObjectManager::getObjectList()
+{
+	return m_object_list;
+}
+
 void AGameObjectManager::deleteAGameObject(AGameObject* obj)
 {
 	m_object_list.remove(obj);

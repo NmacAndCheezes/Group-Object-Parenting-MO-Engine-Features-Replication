@@ -10,11 +10,13 @@ void Plane::initialize(TexturePtr tex)
 
 Plane::Plane() : Cube(TexturePtr())
 {
+	setName("Plane");
 }
 
 Plane::Plane(TexturePtr tex) : Cube(tex)
 {
 	initialize(tex);
+	setName("Plane");
 }
 
 void Plane::update()

@@ -42,6 +42,7 @@ SOFTWARE.*/
 #include "DeviceContext.h"
 #include "SwapChain.h"
 #include "Editor UI/EditorUIManager.h"
+#include "Transform.h"
 
 AppWindow::AppWindow()
 {

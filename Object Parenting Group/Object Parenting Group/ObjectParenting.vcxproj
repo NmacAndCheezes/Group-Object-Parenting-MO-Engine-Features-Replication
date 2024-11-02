@@ -141,6 +141,7 @@
     <ClCompile Include="editor ui\CreditsScreen.cpp" />
     <ClCompile Include="editor ui\EColorPickerScreen.cpp" />
     <ClCompile Include="editor ui\EditorUIManager.cpp" />
+    <ClCompile Include="Editor UI\EHeirarcyUI.cpp" />
     <ClCompile Include="editor ui\EToolBar.cpp" />
     <ClCompile Include="editor ui\imgui-master\imgui.cpp" />
     <ClCompile Include="editor ui\imgui-master\imgui_demo.cpp" />
@@ -201,6 +202,7 @@
     <ClInclude Include="editor ui\imgui-master\imstb_textedit.h" />
     <ClInclude Include="editor ui\imgui-master\imstb_truetype.h" />
     <ClInclude Include="EditorCamera.h" />
+    <ClInclude Include="Editor UI\EHeirarcyUI.h" />
     <ClInclude Include="EngineTime.h" />
     <ClInclude Include="GraphicsEngine.h" />
     <ClInclude Include="IndexBuffer.h" />

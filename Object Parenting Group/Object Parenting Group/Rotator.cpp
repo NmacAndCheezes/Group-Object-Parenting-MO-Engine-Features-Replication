@@ -1,5 +1,6 @@
 #include "Rotator.h"
 #include "EngineTime.h"
+#include "Transform.h"
 
 Rotator::Rotator() : Component()
 {

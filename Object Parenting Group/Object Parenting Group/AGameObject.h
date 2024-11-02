@@ -3,9 +3,10 @@
 #include "Matrix4x4.h"
 #include "Vector3D.h"
 #include "Window.h"
-#include "Transform.h"
+
 #include <string>
 class Component;
+class Transform;
 
 class AGameObject
 {
@@ -19,6 +20,8 @@ public:
 	
 	void setId(int id);
 	std::string getId();
+
+	void setName(std::string);
 	std::string getName();
 	~AGameObject();
 

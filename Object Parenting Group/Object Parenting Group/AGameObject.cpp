@@ -1,5 +1,6 @@
 #include "AGameObject.h"
 #include "Component.h"
+#include "Transform.h"
 #include "AGameObjectManager.h"
 
 AGameObject::AGameObject() 
@@ -53,6 +54,11 @@ void AGameObject::setId(int id)
 std::string AGameObject::getId()
 {
 	return m_id;
+}
+
+void AGameObject::setName(std::string name)
+{
+	m_name = name;
 }
 
 std::string AGameObject::getName()

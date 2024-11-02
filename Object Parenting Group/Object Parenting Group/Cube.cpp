@@ -10,7 +10,7 @@ void Cube::initialize(TexturePtr tex)
 	attachComponent(pr);
 }
 
-Cube::Cube(TexturePtr tex) : AGameObject()
+Cube::Cube(TexturePtr tex) : AGameObject("Cube")
 {
 	initialize(tex);
 }

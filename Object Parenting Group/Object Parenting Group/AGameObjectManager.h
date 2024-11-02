@@ -15,6 +15,8 @@ public:
 	static void initialize();
 	static void destroy();
 	static AGameObjectManager* get();
+
+	std::list<AGameObject*> getObjectList();
 private:
 	AGameObjectManager();
 	static AGameObjectManager* sharedInstance;
