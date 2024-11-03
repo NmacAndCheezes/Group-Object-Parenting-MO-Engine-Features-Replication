@@ -18,38 +18,34 @@ void EditorCamera::move()
 {
 	if (!isEnabled) return;
 
-	Matrix4x4 worldCam; worldCam.setIdentity();
-	Matrix4x4 temp; temp.setIdentity();
-
-	worldCam = getRotationMatrix();
-	Vector3D new_pos;
+	DirectX::XMMATRIX worldCam;
+	DirectX::XMFLOAT3 new_pos;
 	switch (ProjectionType)
 	{
 	case orthographic:
-		new_pos = m_position + Vector3D::up() * (m_forward * 0.1f);
-		new_pos = new_pos + Vector3D::right() * (m_right * 0.1f);
+		new_pos = m_position + DirectX::XMFLOAT3(0, m_forward * 0.1f,0);
+		new_pos = new_pos + DirectX::XMFLOAT3(0,0, m_right * 0.1f);
 		break;
 	default:
-		new_pos = m_position + (worldCam.getZDirection() * (m_forward * 0.1f));
+		new_pos = m_position + (DirectX::XMVectorGetZ(worldCam) * (m_forward * 0.1f));
 		new_pos = new_pos + (worldCam.getXDirection() * (m_right * 0.1f));
 		break;
 	}
-
-	worldCam.setTranslation(new_pos);
+	
+	
+	worldCam = DirectX::XMMatrixTranslation(new_pos.x, new_pos.y, new_pos.z);
 	
 
-	m_position = worldCam.getTranslation();
+	m_position = DirectX::XMFLOAT3(worldCam.r[0].m128_f32);
 	
 	updateCamera();
-
-	m_position.printVector("Position");
 }
 
 void EditorCamera::onKeyDown(int key)
 {
-	float x = m_position.X();
-	float y = m_position.Y();
-	float z = m_position.Z();
+	float x = m_position.x;
+	float y = m_position.y;
+	float z = m_position.z;
 	float moveSpeed = 10.0f;
 
 	if (key == 'W')
@@ -89,9 +85,9 @@ void EditorCamera::onKeyDown(int key)
 		}
 		else
 		{
-			float x = m_rotation.X();
-			float y = m_rotation.Y();
-			float z = m_rotation.Z();
+			float x = m_rotation.x;
+			float y = m_rotation.y;
+			float z = m_rotation.z;
 
 			z -= EngineTime::getDeltaTime() * moveSpeed;
 			this->SetRotation(x, y, z);
@@ -105,9 +101,9 @@ void EditorCamera::onKeyDown(int key)
 		}
 		else
 		{
-			float x = m_rotation.X();
-			float y = m_rotation.Y();
-			float z = m_rotation.Z();
+			float x = m_rotation.x;
+			float y = m_rotation.y;
+			float z = m_rotation.z;
 
 			z += EngineTime::getDeltaTime() * moveSpeed;
 			this->SetRotation(x, y, z);
@@ -149,9 +145,9 @@ void EditorCamera::onMouseMove(const Point& mouse_pos)
 {
 	if (InputSystem::get()->getLeftMouseDown() && ProjectionType != orthographic)
 	{
-		float x = m_rotation.X();
-		float y = m_rotation.Y();
-		float z = m_rotation.Z();
+		float x = m_rotation.x;
+		float y = m_rotation.y;
+		float z = m_rotation.z;
 
 		float speed = 0.01;
 		x += (mouse_pos.m_y - (m_window->Height() / 2.0f)) * EngineTime::getDeltaTime() * speed;
@@ -182,14 +178,14 @@ void EditorCamera::onRightMouseUp(const Point& delta_mouse_pos)
 }
 
 
-void EditorCamera::SetInitialPosition(const Vector3D& newPos)
+void EditorCamera::SetInitialPosition(const DirectX::XMFLOAT3& newPos)
 {
 	initialPosition = newPos;
 	m_position = newPos;
 	this->updateCamera();
 }
 
-void EditorCamera::SetInitialRotation(const Vector3D& newRot)
+void EditorCamera::SetInitialRotation(const DirectX::XMFLOAT3& newRot)
 {
 	initialRotation = newRot;
 	m_rotation = newRot;
@@ -198,15 +194,19 @@ void EditorCamera::SetInitialRotation(const Vector3D& newRot)
 
 void EditorCamera::SetInitialPosition(float x, float y, float z)
 {
-	initialPosition = Vector3D(x, y, z);
-	m_position.SetVector(x, y, z);
+	initialPosition = DirectX::XMFLOAT3(x, y, z);
+	m_position.x = x;
+	m_position.y = y;
+	m_position.z = z;
 	this->updateCamera();
 }
 
 void EditorCamera::SetInitialRotation(float x, float y, float z)
 {
-	initialRotation = Vector3D(x, y, z);
-	m_rotation.SetVector(x, y, z);
+	initialRotation = DirectX::XMFLOAT3(x, y, z);
+	m_rotation.x = x;
+	m_rotation.y = y;
+	m_rotation.z = z;
 	this->updateCamera();
 }
 

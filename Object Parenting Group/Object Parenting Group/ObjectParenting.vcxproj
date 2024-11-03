@@ -165,9 +165,7 @@
     <ClCompile Include="RenderSystem.cpp" />
     <ClCompile Include="resourcemanager\Resource.cpp" />
     <ClCompile Include="resourcemanager\ResourceManager.cpp" />
-    <ClCompile Include="Rotator.cpp" />
     <ClCompile Include="SwapChain.cpp" />
-    <ClCompile Include="TestAnimation3.cpp" />
     <ClCompile Include="texturemanager\ImageUI.cpp" />
     <ClCompile Include="texturemanager\ImageUIManager.cpp" />
     <ClCompile Include="texturemanager\Texture.cpp" />
@@ -175,7 +173,6 @@
     <ClCompile Include="Transform.cpp" />
     <ClCompile Include="VertexBuffer.cpp" />
     <ClCompile Include="VertexShader.cpp" />
-    <ClCompile Include="WarpCubeToPlane.cpp" />
     <ClCompile Include="Window.cpp" />
     <ClCompile Include="WindowManager.cpp" />
   </ItemGroup>
@@ -223,9 +220,7 @@
     <ClInclude Include="RenderSystem.h" />
     <ClInclude Include="resourcemanager\Resource.h" />
     <ClInclude Include="resourcemanager\ResourceManager.h" />
-    <ClInclude Include="Rotator.h" />
     <ClInclude Include="SwapChain.h" />
-    <ClInclude Include="TestAnimation3.h" />
     <ClInclude Include="texturemanager\ImageUI.h" />
     <ClInclude Include="texturemanager\ImageUIManager.h" />
     <ClInclude Include="texturemanager\stb_image.h" />
@@ -237,7 +232,6 @@
     <ClInclude Include="Vector4D.h" />
     <ClInclude Include="VertexBuffer.h" />
     <ClInclude Include="VertexShader.h" />
-    <ClInclude Include="WarpCubeToPlane.h" />
     <ClInclude Include="Window.h" />
     <ClInclude Include="WindowManager.h" />
   </ItemGroup>

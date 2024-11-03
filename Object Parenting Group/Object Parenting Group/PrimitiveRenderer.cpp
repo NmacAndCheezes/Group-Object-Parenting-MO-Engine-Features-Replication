@@ -64,26 +64,26 @@ void PrimitiveRenderer::update()
 void PrimitiveRenderer::createCube()
 {
 
-	Vector3D position_list[] =
+	DirectX::XMFLOAT3 position_list[] =
 	{
-		{ Vector3D(-0.5f,-0.5f,-0.5f)},
-		{ Vector3D(-0.5f,0.5f,-0.5f) },
-		{ Vector3D(0.5f,0.5f,-0.5f) },
-		{ Vector3D(0.5f,-0.5f,-0.5f)},
+		{ DirectX::XMFLOAT3(-0.5f,-0.5f,-0.5f)},
+		{ DirectX::XMFLOAT3(-0.5f,0.5f,-0.5f) },
+		{ DirectX::XMFLOAT3(0.5f,0.5f,-0.5f) },
+		{ DirectX::XMFLOAT3(0.5f,-0.5f,-0.5f)},
 
 		//BACK FACE
-		{ Vector3D(0.5f,-0.5f,0.5f) },
-		{ Vector3D(0.5f,0.5f,0.5f) },
-		{ Vector3D(-0.5f,0.5f,0.5f)},
-		{ Vector3D(-0.5f,-0.5f,0.5f) }
+		{ DirectX::XMFLOAT3(0.5f,-0.5f,0.5f) },
+		{ DirectX::XMFLOAT3(0.5f,0.5f,0.5f) },
+		{ DirectX::XMFLOAT3(-0.5f,0.5f,0.5f)},
+		{ DirectX::XMFLOAT3(-0.5f,-0.5f,0.5f) }
 	};
 
-	Vector2D texcoord_list[] =
+	DirectX::XMFLOAT2 texcoord_list[] =
 	{
-		{ Vector2D(0.0f,0.0f) },
-		{ Vector2D(0.0f,1.0f) },
-		{ Vector2D(1.0f,0.0f) },
-		{ Vector2D(1.0f,1.0f) }
+		{ DirectX::XMFLOAT2(0.0f,0.0f) },
+		{ DirectX::XMFLOAT2(0.0f,1.0f) },
+		{ DirectX::XMFLOAT2(1.0f,0.0f) },
+		{ DirectX::XMFLOAT2(1.0f,1.0f) }
 	};
 
 	vertex vertex_list[] =
@@ -178,20 +178,20 @@ void PrimitiveRenderer::createCube()
 
 void PrimitiveRenderer::createPlane()
 {
-	Vector3D position_list[] =
+	DirectX::XMFLOAT3 position_list[] =
 	{
-		{ Vector3D(-0.5f,-0.5f,-0.5f)},
-		{ Vector3D(0.5f,-0.5f,-0.5f)},
-		{ Vector3D(0.5f,-0.5f,0.5f) },
-		{ Vector3D(-0.5f,-0.5f,0.5f) }
+		{ DirectX::XMFLOAT3(-0.5f,-0.5f,-0.5f)},
+		{ DirectX::XMFLOAT3(0.5f,-0.5f,-0.5f)},
+		{ DirectX::XMFLOAT3(0.5f,-0.5f,0.5f) },
+		{ DirectX::XMFLOAT3(-0.5f,-0.5f,0.5f) }
 	};
 
-	Vector2D texcoord_list[] =
+	DirectX::XMFLOAT2 texcoord_list[] =
 	{
-		{ Vector2D(0.0f,0.0f) },
-		{ Vector2D(0.0f,1.0f) },
-		{ Vector2D(1.0f,0.0f) },
-		{ Vector2D(1.0f,1.0f) }
+		{ DirectX::XMFLOAT2(0.0f,0.0f) },
+		{ DirectX::XMFLOAT2(0.0f,1.0f) },
+		{ DirectX::XMFLOAT2(1.0f,0.0f) },
+		{ DirectX::XMFLOAT2(1.0f,1.0f) }
 	};
 
 	vertex vertex_list[] =

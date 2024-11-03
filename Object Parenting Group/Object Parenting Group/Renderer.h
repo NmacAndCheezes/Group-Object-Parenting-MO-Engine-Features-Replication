@@ -13,17 +13,17 @@ public:
 protected:
 	struct vertex
 	{
-		Vector3D position;
-		Vector2D texCoord;
+		DirectX::XMFLOAT3 position;
+		DirectX::XMFLOAT2 texCoord;
 	};
 
 
 	__declspec(align(16))
 		struct constant
 	{
-		Matrix4x4 m_world;
-		Matrix4x4 m_view;
-		Matrix4x4 m_proj;
+		DirectX::XMMATRIX m_world;
+		DirectX::XMMATRIX m_view;
+		DirectX::XMMATRIX m_proj;
 		unsigned int m_time;
 	};
 };

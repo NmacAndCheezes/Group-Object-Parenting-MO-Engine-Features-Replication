@@ -1,15 +1,16 @@
 #include "Camera.h"
+#include <DirectXMath.h>
 
 Camera::Camera(AppWindow* window) : m_window(window)
 {
 }
 
-Matrix4x4 Camera::getViewMatrix()
+DirectX::XMMATRIX Camera::getViewMatrix()
 {
 	return m_viewMatrix;
 }
 
-Matrix4x4 Camera::getProjectionMatrix()
+DirectX::XMMATRIX Camera::getProjectionMatrix()
 {
 	return m_projectionMatrix;
 }
@@ -43,75 +44,48 @@ void Camera::setViewType(int new_proj_type)
 	updateCamera();
 }
 
-Matrix4x4 Camera::getPositionMatrix()
+DirectX::XMMATRIX Camera::getPositionMatrix()
 {
-	Matrix4x4 positionMatrix; positionMatrix.setIdentity();
-	Matrix4x4 temp; temp.setIdentity();
-
-	temp.setTranslation(m_position);
-	positionMatrix = positionMatrix.multiplyTo(temp);
-
-	return positionMatrix;
+	return DirectX::XMMatrixTranslation(m_position.x, m_position.y, m_position.z);
 }
 
-Matrix4x4 Camera::getRotationMatrix()
+DirectX::XMMATRIX Camera::getRotationMatrix()
 {
-	Matrix4x4 rotationMatrix; rotationMatrix.setIdentity();
-	Matrix4x4 temp; temp.setIdentity();
-
+#if 1
 	switch (ProjectionType)
 	{
 	case orthographic:
-		temp.setRotationX(0);
-		rotationMatrix = rotationMatrix.multiplyTo(temp);
-
-		temp.setRotationY(0);
-		rotationMatrix = rotationMatrix.multiplyTo(temp);
-
-		temp.setRotationZ(m_rotation.Z());
-		rotationMatrix = rotationMatrix.multiplyTo(temp);
-		break;
-
+		return DirectX::XMMatrixRotationRollPitchYaw(0, 0, m_rotation.z);
 	default:
-		temp.setRotationX(m_rotation.X());
-		rotationMatrix = rotationMatrix.multiplyTo(temp);
-
-		temp.setRotationY(m_rotation.Y());
-		rotationMatrix = rotationMatrix.multiplyTo(temp);
-
-		temp.setRotationZ(m_rotation.Z());
-		rotationMatrix = rotationMatrix.multiplyTo(temp);
+		return DirectX::XMMatrixRotationRollPitchYaw(m_rotation.x, m_rotation.y, m_rotation.z);
 	}
-
-	return rotationMatrix;
+#endif
 }
 
 void Camera::updateCamera()
 {
 	if (!isEnabled) return;
 
-	Matrix4x4 worldCam; worldCam.setIdentity();
-	Matrix4x4 temp; temp.setIdentity();
+	DirectX::XMMATRIX translation = getPositionMatrix();
+	DirectX::XMMATRIX rotation = getRotationMatrix();
+	
+	m_viewMatrix = rotation * translation;
 
-	worldCam = getRotationMatrix();
-	
-	worldCam = worldCam.multiplyTo(getPositionMatrix());
-	
 	if (ProjectionType == perspective)
 	{
-		worldCam.inverse();
+		DirectX::XMVECTOR Eye = DirectX::XMVectorSet(m_position.x, m_position.y, -1.0f, 0.0f);
+		DirectX::XMVECTOR LookAt = DirectX::XMVectorSet(m_position.x, m_position.y, 0.0f, 0.0f);
+		DirectX::XMVECTOR Up = DirectX::XMVectorSet(0.0f, 1.0f, 0.0f, 0.0f);
+		DirectX::XMMatrixLookAtLH(Eye, LookAt, Up);
 	}
-	
-	this->m_viewMatrix = worldCam;
-
 #pragma region Setting Projection Based on projection type;
 	switch (ProjectionType)
 	{
 		case perspective:
-			m_projectionMatrix.setPerspectiveFovLH(1, this->m_window->AspectRatio(), 0.1f, 1000.0f);
+			m_projectionMatrix = DirectX::XMMatrixPerspectiveFovLH(1, this->m_window->AspectRatio(), 0.1f, 1000.0f);
 			break;
 		default:
-			m_projectionMatrix.setOrthoLH
+			m_projectionMatrix = DirectX::XMMatrixOrthographicLH
 			(
 				(m_window->Width()) / 300.0f,
 				(m_window->Height()) / 300.0f,
@@ -128,41 +102,37 @@ Camera::~Camera()
 {
 }
 
-void Camera::SetPosition(const Vector3D& newPos)
+void Camera::SetPosition(const DirectX::XMFLOAT3& newPos)
 {
 	m_position = newPos;
 	this->updateCamera();
-	m_position.printVector("Position");
 }
 
-void Camera::SetRotation(const Vector3D& newRot)
+void Camera::SetRotation(const DirectX::XMFLOAT3& newRot)
 {
 	m_rotation = newRot;
 	this->updateCamera();
-	m_rotation.printVector("Rotation");
 }
 
 void Camera::SetPosition(float x, float y, float z)
 {
-	m_position.SetVector(x, y, z);
+	m_position = DirectX::XMFLOAT3(x, y, z);
 	this->updateCamera();
-	m_position.printVector("Position");
 }
 
 void Camera::SetRotation(float x, float y, float z)
 {
-	m_rotation.SetVector(x, y, z);
+	m_rotation = DirectX::XMFLOAT3(x, y, z);
 	this->updateCamera();
-	m_rotation.printVector("Rotation");
 }
 
 
-Vector3D Camera::position()
+DirectX::XMFLOAT3 Camera::position()
 {
 	return m_position;
 }
 
-Vector3D Camera::rotation()
+DirectX::XMFLOAT3 Camera::rotation()
 {
 	return m_rotation;
 }

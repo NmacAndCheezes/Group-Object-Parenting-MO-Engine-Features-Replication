@@ -1,47 +1,51 @@
 #pragma once
-#include "Vector3D.h"
-#include "Matrix4x4.h"
+#include <DirectXMath.h>
 
 class AGameObject;
 class Transform
 {
 public:
 	Transform(AGameObject* attachedObj);
-	Transform(AGameObject* attachedObj, const Vector3D& initialPosition);
-	Transform(AGameObject* attachedObj, const Vector3D& initialPosition, const Vector3D& initialRotation);
-	Transform(AGameObject* attachedObj, const Vector3D& initialPosition, const Vector3D& initialRotation, const Vector3D& initialScale);
+	Transform(AGameObject* attachedObj, const DirectX::XMFLOAT3& initialPosition);
+	Transform(AGameObject* attachedObj, const DirectX::XMFLOAT3& initialPosition, const DirectX::XMFLOAT3& initialRotation);
+	Transform(AGameObject* attachedObj, const DirectX::XMFLOAT3& initialPosition, const DirectX::XMFLOAT3& initialRotation, const DirectX::XMFLOAT3& initialScale);
 	~Transform();
 
 	void update();
 
-	void SetPosition(const Vector3D& vector);
-	void SetLocalPosition(const Vector3D& vector);
+	void SetPosition(const DirectX::XMFLOAT3& vector);
+	void SetLocalPosition(const DirectX::XMFLOAT3& vector);
 
-	void SetRotation(const Vector3D& vector);
-	void SetLocalRotation(const Vector3D& vector);
+	void SetRotation(const DirectX::XMFLOAT3& vector);
+	void SetLocalRotation(const DirectX::XMFLOAT3& vector);
 
-	void SetScale(const Vector3D& vector);
-	void SetLocalScale(const Vector3D& vector);
+	void SetScale(const DirectX::XMFLOAT3& vector);
+	void SetLocalScale(const DirectX::XMFLOAT3& vector);
 
-	Vector3D position();
-	Vector3D localPosition();
+	DirectX::XMFLOAT3 position();
+	DirectX::XMFLOAT3 localPosition();
 
-	Vector3D rotation();
-	Vector3D localRotation();
+	DirectX::XMFLOAT3 rotation();
+	DirectX::XMFLOAT3 localRotation();
 
-	Vector3D scale();
-	Vector3D localScale();
+	DirectX::XMFLOAT3 scale();
+	DirectX::XMFLOAT3 localScale();
 
-	Matrix4x4 getTransformMatrix();
+	DirectX::XMMATRIX getTransformMatrix();
 
 	void RecalculateChildTransformWithoutParent();
 	void RecalculateChildTransformWithParent(const Transform* parent);
 private:
-	Vector3D m_local_pos;
-	Vector3D m_local_rot;
-	Vector3D m_local_scale;
+	DirectX::XMFLOAT3 m_position;
+	DirectX::XMFLOAT3 m_local_pos;
+	
+	DirectX::XMFLOAT3 m_rotation;
+	DirectX::XMFLOAT3 m_local_rot;
 
-	Matrix4x4 m_transform_matrix;
+	DirectX::XMFLOAT3 m_scale;
+	DirectX::XMFLOAT3 m_local_scale;
+
+	DirectX::XMMATRIX m_transform_matrix;
 
 	AGameObject* m_attachedObj = nullptr;
 };

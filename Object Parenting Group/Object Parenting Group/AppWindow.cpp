@@ -25,18 +25,13 @@ SOFTWARE.*/
 
 #include "AppWindow.h"
 #include <Windows.h>
-#include "Vector3D.h"
-#include "Matrix4x4.h"
 #include "AGameObjectManager.h"
 #include "Cube.h"
-#include "Rotator.h"
 #include "Plane.h"
 #include "EditorCamera.h"
 #include "CameraManager.h"
 #include "InputSystem.h"
 #include "Math.h"
-#include "TestAnimation3.h"
-#include "WarpCubeToPlane.h"
 #include "GraphicsEngine.h"
 #include "RenderSystem.h"
 #include "DeviceContext.h"
@@ -74,21 +69,17 @@ void AppWindow::onCreate()
 
 	TexturePtr m_wood_tex = GraphicsEngine::get()->getTextureManager()->createTextureFromFile(L"./Assets/Textures/brick.png");
 #if 1
-	Rotator* rotator = new Rotator(Vector3D(1, 1, 1));
 	Cube* cube;
 	cube = new Cube(m_wood_tex);
-	cube->getTransform()->SetPosition(Vector3D(1, 2, 0));
-	cube->attachComponent(rotator);
+	cube->getTransform()->SetPosition(DirectX::XMFLOAT3(1, 2, 0));
 
-	rotator = new Rotator(Vector3D(-1, -1, -1));
 	Cube* cube2 = new Cube(m_wood_tex);
-	cube2->getTransform()->SetPosition(Vector3D(-1, 2, 0));
-	cube2->attachComponent(rotator);
+	cube2->getTransform()->SetPosition(DirectX::XMFLOAT3(-1, 2, 0));
 
 	m_wood_tex = GraphicsEngine::get()->getTextureManager()->createTextureFromFile(L"./Assets/Textures/sand.jpg");
 	Plane* plane = new Plane(m_wood_tex);
-	plane->getTransform()->SetRotation(Vector3D(Math::toRadians(180), 0, 0));
-	plane->getTransform()->SetScale(Vector3D(100, 0, 100));
+	plane->getTransform()->SetRotation(DirectX::XMFLOAT3(Math::toRadians(180), 0, 0));
+	plane->getTransform()->SetScale(DirectX::XMFLOAT3(100, 0, 100));
 #endif
 	
 #if 0

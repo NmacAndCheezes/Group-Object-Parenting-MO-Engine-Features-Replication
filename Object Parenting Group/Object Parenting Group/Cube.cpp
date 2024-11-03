@@ -1,7 +1,6 @@
 #include "Cube.h"
 #include "Vector3D.h"
 #include <iostream>
-#include "Rotator.h"
 #include "PrimitiveRenderer.h"
 
 void Cube::initialize(TexturePtr tex)
