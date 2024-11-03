@@ -28,6 +28,8 @@ public:
 
 private:
 	void UnbindRendererWithChildren(AGameObject* obj);
+	void RemoveObject(AGameObject* gameObject);  
+	void RemoveObjectByName(std::string name); 
 
 
 private:
@@ -40,6 +42,7 @@ private:
 
 private:
 	friend class HeirarcyUI;
+	friend class HierarchyUI;
 	friend class InspectorUI;
 };
 

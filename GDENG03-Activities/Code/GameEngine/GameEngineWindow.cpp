@@ -23,33 +23,55 @@ GameEngineWindow::~GameEngineWindow()
 void GameEngineWindow::OnCreate(HWND hWnd)
 {
 	// initialize game engine
-	
 	GraphicsEngine::GetInstance()->Init();
-	GraphicsEngine::GetInstance()->SetViewport(windowSize.right - windowSize.left, windowSize.bottom - windowSize.top);
-	swapChain = GraphicsEngine::GetInstance()->CreateSwapChain(hWnd, windowSize.right - windowSize.left, windowSize.bottom - windowSize.top);
+	GraphicsEngine::GetInstance()->SetViewport(width, height);
+	swapChain = GraphicsEngine::GetInstance()->CreateSwapChain(hWnd, width, height);
 	EngineTime::Initialize();
 	EditorUIManager::get()->initialize(hWnd);
 
 	// setup the objects
 	FreeCameraObject* freeCam = new FreeCameraObject(width, height); 
-	freeCam->GetTransform()->Position = { 0.0f, 0.0f, 0.0f }; 
+	freeCam->GetTransform()->Position = { 0.0f, 10.0f, 0.0f }; 
 	GameObjectManager::GetInstance()->AddObject(freeCam); 
 
-	SphereObject* sphere = new SphereObject();
-	GameObjectManager::GetInstance()->AddObject(sphere);
-	sphere->GetTransform()->Position = { 0, 0, 10 };
 
-	CubeObject* cube = new CubeObject();
-	GameObjectManager::GetInstance()->AddObject(cube);
-	cube->GetTransform()->Position = { 5, 0, 10 };
+	std::vector<AGameObject*> objsList;
+	int rowSize = 7; int colSize = 7;
+	float rowSpacing = 5.f; float colSpacing = 5.f;
+	int sphereNum = 0, cylinderNum = 0, coneNum = 0, cubeNum = 0;  
 
-	ConeObject* cone = new ConeObject();
-	GameObjectManager::GetInstance()->AddObject(cone);
-	cone->GetTransform()->Position = { -5, 0, 10 };
+	for (int i = 0; i < colSize; i++)   
+	{
+		for (int j = 0; j < rowSize; j++)  
+		{
+			int randNum = rand() % 4; 
+			AGameObject* randObj = nullptr; 
 
-	CylinderObject* cylinder = new CylinderObject();
-	GameObjectManager::GetInstance()->AddObject(cylinder);
-	cylinder->GetTransform()->Position = { -10, 0, 10 };
+			switch (randNum)  
+			{
+				case 0:
+					{ randObj = new SphereObject("Sphere" + std::to_string(sphereNum)); sphereNum++; break; }
+				case 1: 
+					{ randObj = new CylinderObject("Cylinder" + std::to_string(cylinderNum)); cylinderNum++; break; } 
+				case 2:
+					{ randObj = new ConeObject("Cone" + std::to_string(coneNum)); coneNum++; break; }
+				case 3:
+				default:
+					{ randObj = new CubeObject("Cube" + std::to_string(cubeNum)); cubeNum++; break; }
+			}
+
+			float x = j * rowSpacing - (rowSize / 2.f - 0.5f) * rowSpacing; 
+			float z = i * colSpacing - (colSize / 2.f - 0.5f) * colSpacing;  
+			randObj->GetTransform()->Position = { x , 0, z };  
+
+			randNum = (i == 0) ? colSize * 4 : rand() % colSize * 4 + 1;  
+			int parentIndex = (randNum / 4) + (i - 1) * rowSize;
+			if (randNum == colSize * 4) GameObjectManager::GetInstance()->AddObject(randObj);
+			else objsList[parentIndex]->AttachChild(randObj); 
+
+			objsList.push_back(randObj);
+		}
+	}
 }
 
 void GameEngineWindow::OnUpdate()

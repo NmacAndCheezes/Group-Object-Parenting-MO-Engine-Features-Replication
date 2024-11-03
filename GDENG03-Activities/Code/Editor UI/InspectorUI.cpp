@@ -1,5 +1,6 @@
 #include "InspectorUI.h"
 #include "HeirarcyUI.h"
+#include "HierarchyUI.h"
 #include "../GameEngine/Components/Transform.h"
 #include "../GameEngine/GameObjects/AGameObject.h"
 #include "../GameEngine/Managers/GameObjectManager.h"
@@ -8,10 +9,17 @@ InspectorUI::InspectorUI(HeirarcyUI* HeirarcyUI) : heirarcyUI(HeirarcyUI)
 {
 }
 
+InspectorUI::InspectorUI(HierarchyUI* hierarchyUI) : hierarchyUI(hierarchyUI)
+{
+}
+
 void InspectorUI::update()
 {
-	if (heirarcyUI->selectedObject == nullptr) return;
-	AGameObject* selected = heirarcyUI->selectedObject;
+	/*if (heirarcyUI->selectedObject == nullptr) return;
+	AGameObject* selected = heirarcyUI->selectedObject;*/
+
+	if (hierarchyUI->selectedObject == nullptr) return;
+	AGameObject* selected = hierarchyUI->selectedObject;
 	Transform* t = selected->transform;
 
 	pos[0] = t->LocalPosition.x;

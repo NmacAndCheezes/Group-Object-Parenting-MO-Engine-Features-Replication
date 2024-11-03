@@ -7,6 +7,8 @@
 #include "HeirarcyUI.h"
 #include "InspectorUI.h"
 
+#include "HierarchyUI.h"
+
 EditorUIManager* EditorUIManager::sharedInstance = nullptr;
 
 EditorUIManager::EditorUIManager(HWND hwnd)
@@ -23,8 +25,11 @@ EditorUIManager::EditorUIManager(HWND hwnd)
 	EToolBar* tb = new EToolBar();
 	m_UIScreenList["Tool Bar"] = tb;
 
-	HeirarcyUI* h = new HeirarcyUI();
-	m_UIScreenList["Heirarcy"] = h;
+	/*HeirarcyUI* h = new HeirarcyUI();
+	m_UIScreenList["Heirarcy"] = h;*/
+
+	HierarchyUI* h = new HierarchyUI(); 
+	m_UIScreenList["Heirarcy"] = h; 
 
 	InspectorUI* i = new InspectorUI(h);
 	m_UIScreenList["Inspector"] = i;

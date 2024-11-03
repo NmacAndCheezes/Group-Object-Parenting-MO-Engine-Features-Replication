@@ -67,6 +67,7 @@
     <ClCompile Include="Code\GameEngine\MathUtils.cpp" />
     <ClCompile Include="Code\Editor UI\HeirarcyUI.cpp" />
     <ClCompile Include="Code\Editor UI\InspectorUI.cpp" />
+    <ClCompile Include="Code\Editor UI\HierarchyUI.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Code\Editor UI\AUIScreen.h" />
@@ -130,6 +131,7 @@
     <ClInclude Include="Code\GameEngine\MathUtils.h" />
     <ClInclude Include="Code\Editor UI\HeirarcyUI.h" />
     <ClInclude Include="Code\Editor UI\InspectorUI.h" />
+    <ClInclude Include="Code\Editor UI\HierarchyUI.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Code\Shaders\PixelShader.hlsl">

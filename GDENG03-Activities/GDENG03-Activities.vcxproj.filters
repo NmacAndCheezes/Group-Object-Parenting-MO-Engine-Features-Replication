@@ -50,6 +50,12 @@
     <Filter Include="GameEngine\Components\Scripts">
       <UniqueIdentifier>{c1401415-0581-4e3e-b1e6-5b1726de29ef}</UniqueIdentifier>
     </Filter>
+    <Filter Include="EditorGUI">
+      <UniqueIdentifier>{2690968f-c3b4-4d72-b433-0374acd245bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EditorGUI\IMGUI">
+      <UniqueIdentifier>{e2963b5f-e1b0-4df7-a117-091db58b5f32}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Code\WinMain.cpp" />
@@ -156,18 +162,45 @@
     <ClCompile Include="Code\GameEngine\MathUtils.cpp">
       <Filter>GameEngine</Filter>
     </ClCompile>
-    <ClCompile Include="Code\Editor UI\AUIScreen.cpp" />
-    <ClCompile Include="Code\Editor UI\EToolBar.cpp" />
-    <ClCompile Include="Code\Editor UI\EditorUIManager.cpp" />
-    <ClCompile Include="Code\Editor UI\imgui-master\imgui.cpp" />
-    <ClCompile Include="Code\Editor UI\imgui-master\imgui_demo.cpp" />
-    <ClCompile Include="Code\Editor UI\imgui-master\imgui_draw.cpp" />
-    <ClCompile Include="Code\Editor UI\imgui-master\imgui_impl_dx11.cpp" />
-    <ClCompile Include="Code\Editor UI\imgui-master\imgui_impl_win32.cpp" />
-    <ClCompile Include="Code\Editor UI\imgui-master\imgui_tables.cpp" />
-    <ClCompile Include="Code\Editor UI\imgui-master\imgui_widgets.cpp" />
-    <ClCompile Include="Code\Editor UI\HeirarcyUI.cpp" />
-    <ClCompile Include="Code\Editor UI\InspectorUI.cpp" />
+    <ClCompile Include="Code\Editor UI\AUIScreen.cpp">
+      <Filter>EditorGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Editor UI\EditorUIManager.cpp">
+      <Filter>EditorGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Editor UI\EToolBar.cpp">
+      <Filter>EditorGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Editor UI\HeirarcyUI.cpp">
+      <Filter>EditorGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Editor UI\imgui-master\imgui.cpp">
+      <Filter>EditorGUI\IMGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Editor UI\imgui-master\imgui_demo.cpp">
+      <Filter>EditorGUI\IMGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Editor UI\imgui-master\imgui_draw.cpp">
+      <Filter>EditorGUI\IMGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Editor UI\imgui-master\imgui_impl_dx11.cpp">
+      <Filter>EditorGUI\IMGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Editor UI\imgui-master\imgui_impl_win32.cpp">
+      <Filter>EditorGUI\IMGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Editor UI\imgui-master\imgui_tables.cpp">
+      <Filter>EditorGUI\IMGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Editor UI\imgui-master\imgui_widgets.cpp">
+      <Filter>EditorGUI\IMGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Editor UI\InspectorUI.cpp">
+      <Filter>EditorGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Editor UI\HierarchyUI.cpp">
+      <Filter>EditorGUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Code\WindowsMessageMap.h" />
@@ -312,19 +345,48 @@
     <ClInclude Include="Code\GameEngine\MathUtils.h">
       <Filter>GameEngine</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Editor UI\AUIScreen.h" />
-    <ClInclude Include="Code\Editor UI\EToolBar.h" />
-    <ClInclude Include="Code\Editor UI\EditorUIManager.h" />
-    <ClInclude Include="Code\Editor UI\imgui-master\imstb_truetype.h" />
-    <ClInclude Include="Code\Editor UI\imgui-master\imconfig.h" />
-    <ClInclude Include="Code\Editor UI\imgui-master\imgui.h" />
-    <ClInclude Include="Code\Editor UI\imgui-master\imgui_impl_dx11.h" />
-    <ClInclude Include="Code\Editor UI\imgui-master\imgui_impl_win32.h" />
-    <ClInclude Include="Code\Editor UI\imgui-master\imgui_internal.h" />
-    <ClInclude Include="Code\Editor UI\imgui-master\imstb_rectpack.h" />
-    <ClInclude Include="Code\Editor UI\imgui-master\imstb_textedit.h" />
-    <ClInclude Include="Code\Editor UI\HeirarcyUI.h" />
-    <ClInclude Include="Code\Editor UI\InspectorUI.h" />
+    <ClInclude Include="Code\Editor UI\HeirarcyUI.h">
+      <Filter>EditorGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Editor UI\AUIScreen.h">
+      <Filter>EditorGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Editor UI\EditorUIManager.h">
+      <Filter>EditorGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Editor UI\EToolBar.h">
+      <Filter>EditorGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Editor UI\imgui-master\imconfig.h">
+      <Filter>EditorGUI\IMGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Editor UI\imgui-master\imgui.h">
+      <Filter>EditorGUI\IMGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Editor UI\imgui-master\imgui_impl_dx11.h">
+      <Filter>EditorGUI\IMGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Editor UI\imgui-master\imgui_impl_win32.h">
+      <Filter>EditorGUI\IMGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Editor UI\imgui-master\imgui_internal.h">
+      <Filter>EditorGUI\IMGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Editor UI\imgui-master\imstb_rectpack.h">
+      <Filter>EditorGUI\IMGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Editor UI\imgui-master\imstb_textedit.h">
+      <Filter>EditorGUI\IMGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Editor UI\imgui-master\imstb_truetype.h">
+      <Filter>EditorGUI\IMGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Editor UI\InspectorUI.h">
+      <Filter>EditorGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Editor UI\HierarchyUI.h">
+      <Filter>EditorGUI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Code\Shaders\PixelShader.hlsl">
