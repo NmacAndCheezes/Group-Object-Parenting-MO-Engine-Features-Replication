@@ -29,7 +29,7 @@ EditorUIManager::EditorUIManager(HWND hwnd)
 	m_UIScreenList["Heirarcy"] = h;*/
 
 	HierarchyUI* h = new HierarchyUI(); 
-	m_UIScreenList["Heirarcy"] = h; 
+	m_UIScreenList["Heirarchy"] = h; 
 
 	InspectorUI* i = new InspectorUI(h);
 	m_UIScreenList["Inspector"] = i;
