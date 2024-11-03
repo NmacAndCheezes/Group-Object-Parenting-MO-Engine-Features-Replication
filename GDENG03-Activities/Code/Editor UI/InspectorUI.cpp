@@ -40,14 +40,6 @@ void InspectorUI::update()
 	ImGui::DragFloat3("Rotation", rot);
 	ImGui::DragFloat3("Scale", scale);
 
-	for (auto i : GameObjectManager::GetInstance()->gameObjectList)
-	{
-		if (ImGui::Button(i->Name.c_str()))
-		{
-			selected->AttachChild(i);
-		}
-	}
-
 	t->SetLocalPosition(Vector3(pos[0], pos[1], pos[2]));
 	t->Rotate(t->GetLocalEulerAngles() - Vector3(rot[0], rot[1], rot[2]));
 	t->SetLocalScale(Vector3(scale[0], scale[1], scale[2]));
