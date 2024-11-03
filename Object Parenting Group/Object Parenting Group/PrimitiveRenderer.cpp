@@ -28,7 +28,7 @@ PrimitiveRenderer::PrimitiveRenderer(PRIMITIVE_TYPE primitive, TexturePtr tex) :
 void PrimitiveRenderer::update()
 {
 	constant cbData = {};
-	cbData.m_world = this->attachedObject->transform()->getTransformMatrix();
+	cbData.m_world = this->attachedObject->getTransform()->getTransformMatrix();
 	//cbData.m_world.printMatrix();
 
 #pragma region Camera
