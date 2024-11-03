@@ -151,6 +151,7 @@
     <ClCompile Include="editor ui\imgui-master\imgui_tables.cpp" />
     <ClCompile Include="editor ui\imgui-master\imgui_widgets.cpp" />
     <ClCompile Include="EditorCamera.cpp" />
+    <ClCompile Include="Editor UI\EInspectorUI.cpp" />
     <ClCompile Include="EngineTime.cpp" />
     <ClCompile Include="GraphicsEngine.cpp" />
     <ClCompile Include="IndexBuffer.cpp" />
@@ -203,6 +204,7 @@
     <ClInclude Include="editor ui\imgui-master\imstb_truetype.h" />
     <ClInclude Include="EditorCamera.h" />
     <ClInclude Include="Editor UI\EHeirarcyUI.h" />
+    <ClInclude Include="Editor UI\EInspectorUI.h" />
     <ClInclude Include="EngineTime.h" />
     <ClInclude Include="GraphicsEngine.h" />
     <ClInclude Include="IndexBuffer.h" />

@@ -9,6 +9,7 @@
 #include "EColorPickerScreen.h"
 #include "EToolBar.h"
 #include "EHeirarcyUI.h"
+#include "EInspectorUI.h"
 
 EditorUIManager* EditorUIManager::sharedInstance = nullptr;
 
@@ -28,6 +29,9 @@ EditorUIManager::EditorUIManager(HWND hwnd)
 
 	EHeirarcyUI* h = new EHeirarcyUI();
 	m_UIScreenList["Heirarcy"] = h;
+
+	EInspectorUI* i = new EInspectorUI(h);
+	m_UIScreenList["Inspector"] = i;
 }
 
 void EditorUIManager::initialize(HWND hwnd)
@@ -50,6 +54,7 @@ void EditorUIManager::update()
 
 	ImGui::Render();
 	ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
+	ImGui::EndFrame();
 }
 
 void EditorUIManager::destroy()
@@ -70,6 +75,5 @@ AUIScreen* EditorUIManager::getUIScreen(std::string name)
 
 EditorUIManager::~EditorUIManager()
 {
-	ImGui_ImplDX11_Shutdown();
-	ImGui::DestroyContext();
+
 }
