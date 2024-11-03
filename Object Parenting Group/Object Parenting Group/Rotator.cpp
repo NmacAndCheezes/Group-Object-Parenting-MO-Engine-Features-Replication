@@ -14,8 +14,8 @@ Rotator::Rotator(const Vector3D& vector) : Component()
 
 void Rotator::update()
 {
-	Vector3D new_rot = attachedObject->getTransform()->rotation() + (rotationSpeed * EngineTime::getDeltaTime());
-	attachedObject->getTransform()->SetRotation(new_rot);
+	Vector3D new_rot = attachedObject->getTransform()->localRotation() + (rotationSpeed * EngineTime::getDeltaTime());
+	attachedObject->getTransform()->SetLocalRotation(new_rot);
 }
 
 Rotator::~Rotator()

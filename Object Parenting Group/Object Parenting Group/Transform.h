@@ -6,10 +6,10 @@ class AGameObject;
 class Transform
 {
 public:
-	Transform();
-	Transform(const Vector3D& initialPosition);
-	Transform(const Vector3D& initialPosition, const Vector3D& initialRotation);
-	Transform(const Vector3D& initialPosition, const Vector3D& initialRotation, const Vector3D& initialScale);
+	Transform(AGameObject* attachedObj);
+	Transform(AGameObject* attachedObj, const Vector3D& initialPosition);
+	Transform(AGameObject* attachedObj, const Vector3D& initialPosition, const Vector3D& initialRotation);
+	Transform(AGameObject* attachedObj, const Vector3D& initialPosition, const Vector3D& initialRotation, const Vector3D& initialScale);
 	~Transform();
 
 	void update();
@@ -33,16 +33,16 @@ public:
 	Vector3D localScale();
 
 	Matrix4x4 getTransformMatrix();
+
+	void RecalculateChildTransformWithoutParent();
+	void RecalculateChildTransformWithParent(const Transform* parent);
 private:
-	Vector3D m_position;
 	Vector3D m_local_pos;
-
-	Vector3D m_rotation;
 	Vector3D m_local_rot;
-
-	Vector3D m_scale;
 	Vector3D m_local_scale;
 
 	Matrix4x4 m_transform_matrix;
+
+	AGameObject* m_attachedObj = nullptr;
 };
 

@@ -2,12 +2,12 @@
 #include "Component.h"
 #include "AGameObjectManager.h"
 
-AGameObject::AGameObject() : m_transform(new Transform())
+AGameObject::AGameObject() : m_transform(new Transform(this))
 {
 	AGameObjectManager::get()->registerAGameObject(this);	
 }
 
-AGameObject::AGameObject(std::string name) : m_name(name), m_transform(new Transform())
+AGameObject::AGameObject(std::string name) : m_name(name), m_transform(new Transform(this))
 {
 	AGameObjectManager::get()->registerAGameObject(this);
 }
@@ -15,8 +15,6 @@ AGameObject::AGameObject(std::string name) : m_name(name), m_transform(new Trans
 void AGameObject::update()
 {
 	if (!this->m_isActive) return;
-
-	m_transform->update();
 
 	for (auto c : m_component_list)
 	{
@@ -83,4 +81,42 @@ bool AGameObject::getActive()
 Transform* AGameObject::getTransform()
 {
 	return m_transform;
+}
+
+void AGameObject::attachChild(AGameObject* child)
+{
+	if (child == this || child == nullptr) return;
+
+	if (child->getParent() != nullptr)
+	{
+		child->getParent()->detachChild(child);
+	}
+
+	this->m_children.push_back(child);
+	child->setParent(this);
+	child->setActive(m_isActive);
+
+	//child->getTransform()->RecalculateChildTransformWithParent(this->getTransform());
+}
+
+void AGameObject::detachChild(AGameObject* child)
+{
+	if (child == this || child == nullptr) return;
+
+	this->m_children.remove(child);
+
+	child->setParent(NULL);
+	//child->gettransform->RecalculateChildTransformWithoutParent();
+
+	//this->childList.erase(std::remove(this->childList.begin(), this->childList.end(), child), this->childList.end());
+}
+
+void AGameObject::setParent(AGameObject* parent)
+{
+	m_parent = parent;
+}
+
+AGameObject* AGameObject::getParent()
+{
+	return m_parent;
 }

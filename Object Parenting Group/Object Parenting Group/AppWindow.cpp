@@ -81,9 +81,9 @@ void AppWindow::onCreate()
 	cube->attachComponent(rotator);
 
 	rotator = new Rotator(Vector3D(-1, -1, -1));
-	cube = new Cube(m_wood_tex);
-	cube->getTransform()->SetPosition(Vector3D(-1, 2, 0));
-	cube->attachComponent(rotator);
+	Cube* cube2 = new Cube(m_wood_tex);
+	cube2->getTransform()->SetPosition(Vector3D(-1, 2, 0));
+	cube2->attachComponent(rotator);
 
 	m_wood_tex = GraphicsEngine::get()->getTextureManager()->createTextureFromFile(L"./Assets/Textures/sand.jpg");
 	Plane* plane = new Plane(m_wood_tex);
