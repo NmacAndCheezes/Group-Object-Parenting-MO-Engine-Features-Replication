@@ -1,7 +1,7 @@
 #pragma once
 #include "AUIScreen.h"
-#include "../AGameObject.h"
 
+class AGameObject;
 class EHeirarcyUI : public AUIScreen
 {
 public:
@@ -9,7 +9,6 @@ public:
 	virtual void update() override;
 	~EHeirarcyUI();
 
-	AGameObject* getSelectedObj();
 private:
-	AGameObject* m_selected_gObj = nullptr;
+	AGameObject* m_selected_gObj;
 };

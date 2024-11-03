@@ -162,9 +162,6 @@
     <ClCompile Include="Editor UI\EHeirarcyUI.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Editor UI\EInspectorUI.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AGameObject.h">
@@ -342,9 +339,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Editor UI\EHeirarcyUI.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Editor UI\EInspectorUI.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

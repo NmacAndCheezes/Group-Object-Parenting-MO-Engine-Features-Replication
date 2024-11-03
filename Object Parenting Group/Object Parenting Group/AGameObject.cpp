@@ -1,15 +1,18 @@
 #include "AGameObject.h"
 #include "Component.h"
+#include "Transform.h"
 #include "AGameObjectManager.h"
 
-AGameObject::AGameObject() : m_transform(new Transform())
-{
-	AGameObjectManager::get()->registerAGameObject(this);	
+AGameObject::AGameObject() 
+{ 
+	AGameObjectManager::get()->registerAGameObject(this); 
+	m_transform = new Transform();
 }
 
-AGameObject::AGameObject(std::string name) : m_name(name), m_transform(new Transform())
+AGameObject::AGameObject(std::string name) : m_name(name)
 {
 	AGameObjectManager::get()->registerAGameObject(this);
+	m_transform = new Transform();
 }
 
 void AGameObject::update()
@@ -20,9 +23,7 @@ void AGameObject::update()
 
 	for (auto c : m_component_list)
 	{
-		if (c) {
-			c->update(); // Check if component is valid
-		}
+		c->update();
 	}
 
 	
@@ -35,14 +36,14 @@ void AGameObject::attachComponent(Component* component)
 {
 	component->attachGameObject(this);
 	m_component_list.push_back(component);
-	std::cout << "Attached " << component->getName() << " to " << m_name << std::endl;
+	std::cout << "Attached " << component->getName() << " to " << m_name;
 }
 
 void AGameObject::detachComponent(Component* component)
 {
 	component->detachGameObject();
 	m_component_list.remove(component);
-	std::cout << "Detached " << component->getName() << " from " << m_name << std::endl;
+	std::cout << "Detached " << component->getName() << " from " << m_name;
 }
 
 void AGameObject::setId(int id)
@@ -67,7 +68,6 @@ std::string AGameObject::getName()
 
 AGameObject::~AGameObject()
 {
-	delete m_transform;
 }
 
 void AGameObject::setActive(bool isActive)
@@ -80,7 +80,7 @@ bool AGameObject::getActive()
 	return m_isActive;
 }
 
-Transform* AGameObject::getTransform()
+Transform* AGameObject::transform()
 {
 	return m_transform;
 }

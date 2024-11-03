@@ -3,9 +3,10 @@
 #include "Matrix4x4.h"
 #include "Vector3D.h"
 #include "Window.h"
-#include "Transform.h"
+
 #include <string>
 class Component;
+class Transform;
 
 class AGameObject
 {
@@ -27,16 +28,14 @@ public:
 	void setActive(bool isActive);
 	bool getActive();
 
-	Transform* getTransform();
+	Transform* transform();
 	
 protected:
+	
 	bool m_isActive = true;
-	Transform* m_transform = new Transform();
+	Transform* m_transform;
 	std::list<Component*> m_component_list;
 	std::string m_name;
 	std::string m_id;
-
-private:
-	friend class Transform;
 };
 

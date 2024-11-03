@@ -23,9 +23,35 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.*/
 
 #include "AppWindow.h"
+#include "EngineTime.h"
+#include "GraphicsEngine.h"
+#include "CameraManager.h"
+#include "WindowManager.h"
+#include "InputSystem.h"
+#include "AGameObjectManager.h"
+
+void destroySingletons()
+{
+	InputSystem::destroy();
+	GraphicsEngine::destroy();
+	CameraManager::destroy();
+	AGameObjectManager::destroy();
+	//WindowManager::destroy();
+}
 
 int main()
 {
+	try
+	{
+		InputSystem::initialize();
+		GraphicsEngine::initialize();
+		CameraManager::initialize();
+		EngineTime::initialize();
+		AGameObjectManager::initialize();
+		//WindowManager::initialize();
+	}
+	catch (...) { return -1; }
+
 	{
 		try
 		{
@@ -34,9 +60,12 @@ int main()
 			while (app.isRun());
 		}
 		catch (...) {
+			destroySingletons();
 			return -1;
 		}
 	}
+
+	destroySingletons();
 
 	return 0;
 }

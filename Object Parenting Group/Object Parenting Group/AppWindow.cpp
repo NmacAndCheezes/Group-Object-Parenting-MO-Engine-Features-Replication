@@ -57,11 +57,7 @@ void AppWindow::onCreate()
 {
 	Window::onCreate();
 
-	InputSystem::initialize();
-	GraphicsEngine::initialize();
-	CameraManager::initialize();
-	EngineTime::initialize();
-	AGameObjectManager::initialize();
+	EditorUIManager::initialize(this->m_hwnd);
 
 	EditorCamera* eCam = new EditorCamera(this);
 	eCam->SetPosition(3.78148, 6.62727, -4.19345);
@@ -72,23 +68,24 @@ void AppWindow::onCreate()
 
 	m_swap_chain = GraphicsEngine::get()->getRenderSystem()->createSwapChain(this->m_hwnd, Width(), Height());
 
+
 	TexturePtr m_wood_tex = GraphicsEngine::get()->getTextureManager()->createTextureFromFile(L"./Assets/Textures/brick.png");
 #if 1
 	Rotator* rotator = new Rotator(Vector3D(1, 1, 1));
 	Cube* cube;
 	cube = new Cube(m_wood_tex);
-	cube->getTransform()->SetPosition(Vector3D(1, 2, 0));
+	cube->transform()->SetPosition(Vector3D(1, 2, 0));
 	cube->attachComponent(rotator);
 
 	rotator = new Rotator(Vector3D(-1, -1, -1));
 	cube = new Cube(m_wood_tex);
-	cube->getTransform()->SetPosition(Vector3D(-1, 2, 0));
+	cube->transform()->SetPosition(Vector3D(-1, 2, 0));
 	cube->attachComponent(rotator);
 
 	m_wood_tex = GraphicsEngine::get()->getTextureManager()->createTextureFromFile(L"./Assets/Textures/sand.jpg");
 	Plane* plane = new Plane(m_wood_tex);
-	plane->getTransform()->SetRotation(Vector3D(Math::toRadians(180), 0, 0));
-	plane->getTransform()->SetScale(Vector3D(100, 0, 100));
+	plane->transform()->SetRotation(Math::toRadians(180), 0, 0);
+	plane->transform()->SetScale(Vector3D(100, 0, 100));
 #endif
 	
 #if 0
@@ -111,7 +108,6 @@ void AppWindow::onCreate()
 		cube->attachComponent(rotator);
 	}
 #endif
-	EditorUIManager::initialize(this->m_hwnd);
 }
 
 void AppWindow::onUpdate()
@@ -137,10 +133,5 @@ void AppWindow::onUpdate()
 
 void AppWindow::onDestroy()
 {
-	EditorUIManager::destroy();
 	Window::onDestroy();
-	InputSystem::destroy();
-	GraphicsEngine::destroy();
-	CameraManager::destroy();
-	AGameObjectManager::destroy();
 }
