@@ -86,7 +86,7 @@ void HierarchyUI::PrintObject(AGameObject* obj)
             IM_ASSERT(payload->DataSize == sizeof(AGameObject*));
 
             AGameObject* droppedObj = *(AGameObject**)payload->Data;
-            if (obj->GetParent() == nullptr) GameObjectManager::GetInstance()->RemoveObject(droppedObj);
+            if (droppedObj->GetParent() == nullptr) GameObjectManager::GetInstance()->RemoveObject(droppedObj);
             obj->AttachChild(droppedObj);
         }
         ImGui::EndDragDropTarget();
