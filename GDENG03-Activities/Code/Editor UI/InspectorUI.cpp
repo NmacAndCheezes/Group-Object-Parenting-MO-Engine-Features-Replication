@@ -48,7 +48,8 @@ void InspectorUI::update()
 	ImGui::End();
 
 
-	if (Keyboard::IsKeyDown(VK_DELETE) && hierarchyUI->selectedObject != nullptr)
+	if ((Keyboard::IsKeyDown(VK_DELETE) || Keyboard::IsKeyDown(VK_BACK))
+		&& hierarchyUI->selectedObject != nullptr)
 	{
 		GameObjectManager::GetInstance()->DeleteObject(hierarchyUI->selectedObject);
 		hierarchyUI->selectedObject = nullptr;
