@@ -5,6 +5,8 @@
 #include "../GameEngine/GameObjects/AGameObject.h"
 #include "../GameEngine/Managers/GameObjectManager.h"
 
+#include "../WindowSystem/Keyboard.h"
+
 InspectorUI::InspectorUI(HeirarcyUI* HeirarcyUI) : heirarcyUI(HeirarcyUI)
 {
 }
@@ -44,6 +46,13 @@ void InspectorUI::update()
 	t->Rotate(t->GetLocalEulerAngles() - Vector3(rot[0], rot[1], rot[2]));
 	t->SetLocalScale(Vector3(scale[0], scale[1], scale[2]));
 	ImGui::End();
+
+
+	if (Keyboard::IsKeyDown(VK_DELETE) && hierarchyUI->selectedObject != nullptr)
+	{
+		GameObjectManager::GetInstance()->DeleteObject(hierarchyUI->selectedObject);
+		hierarchyUI->selectedObject = nullptr;
+	}
 }
 
 InspectorUI::~InspectorUI()
